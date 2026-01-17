@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberTech Market - Marketplace Komputer Terlengkap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: #4fc3f7;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #4fc3f7;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 8px 0;
+        }
+
+        nav a:hover {
+            color: #4fc3f7;
+            border-bottom: 2px solid #4fc3f7;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-actions i {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .user-actions i:hover {
+            color: #4fc3f7;
+        }
+
+        .cart-count {
+            background-color: #ff4081;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: -8px;
+            left: -8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(40, 53, 147, 0.9)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1.1rem;
+        }
+
+        .search-bar button {
+            background-color: #4fc3f7;
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #29b6f6;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #1a237e;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #4fc3f7;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            font-size: 2.8rem;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        /* Products */
+        .products {
+            padding: 40px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1a237e;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff4081;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .product-rating span {
+            color: #666;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .product-reviews {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .review {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .review-user {
+            font-weight: 600;
+            color: #1a237e;
+        }
+
+        .review-text {
+            color: #555;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-cart {
+            background-color: #4fc3f7;
+            color: white;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .btn-cart:hover {
+            background-color: #29b6f6;
+        }
+
+        .btn-buy {
+            background-color: #ff4081;
+            color: white;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .btn-buy:hover {
+            background-color: #f50057;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a237e;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: #4fc3f7;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #4fc3f7;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .search-bar input, .search-bar button {
+                border-radius: 50px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <h1>Cyber<span>Tech</span> Market</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#categories"><i class="fas fa-list"></i> Kategori</a></li>
+                    <li><a href="#products"><i class="fas fa-desktop"></i> Produk</a></li>
+                    <li><a href="#"><i class="fas fa-percent"></i> Promo</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Bantuan</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-actions">
+                <i class="fas fa-user"></i>
+                <div style="position: relative;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </div>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Temukan Semua Kebutuhan Komputer Anda di Sini</h2>
+            <p>Marketplace terlengkap untuk komputer, laptop, komponen, aksesoris, dan perangkat teknologi lainnya dengan harga terbaik dan ulasan pembeli asli.</p>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Cari produk komputer, aksesoris, atau komponen...">
+                <button><i class="fas fa-search"></i> Cari</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Kategori Produk</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Laptop & Notebook</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>PC & Komputer Rakitan</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Komponen PC</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <h3>Penyimpanan Data</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3>Aksesoris Komputer</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gaming Gear</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>Printer & Scanner</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Jaringan & Networking</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Produk Terpopuler</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Laptop Gaming" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Laptop Gaming ASUS ROG Strix G15</h3>
+                        <div class="product-price">Rp 18.999.000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5 (124 ulasan)</span>
+                        </div>
+                        
+                        <div class="product-reviews">
+                            <div class="review">
+                                <div class="review-user">Rizky Pratama</div>
+                                <div class="review-text">Laptop kencang banget untuk gaming, spek tinggi tapi tidak terlalu panas. Puas dengan pembelian ini!</div>
+                            </div>
+                            <div class="review">
+                                <div class="review-user">Sari Dewi</div>
+                                <div class="review-text">Desainnya keren, layar warna akurat. Cocok untuk editing video juga.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-cart"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                            <button class="btn btn-buy"><i class="fas fa-bolt"></i> Beli</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="SSD NVMe" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">SSD NVMe Samsung 970 EVO Plus 1TB</h3>
+                        <div class="product-price">Rp 2.450.000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0 (89 ulasan)</span>
+                        </div>
+                        
+                        <div class="product-reviews">
+                            <div class="review">
+                                <div class="review-user">Ahmad Fauzi</div>
+                                <div class="review-text">Performa bikin PC seperti baru! Boot Windows dalam hitungan detik. Worth it!</div>
+                            </div>
+                            <div class="review">
+                                <div class="review-user">Linda Sari</div>
+                                <div class="review-text">Transfer file cepat sekali, recomended banget buat upgrade laptop lama.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-cart"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                            <button class="btn btn-buy"><i class="fas fa-bolt"></i> Beli</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Keyboard Mechanical" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Keyboard Mechanical Logitech G Pro X</h3>
+                        <div class="product-price">Rp 1.899.000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0 (67 ulasan)</span>
+                        </div>
+                        
+                        <div class="product-reviews">
+                            <div class="review">
+                                <div class="review-user">Budi Santoso</div>
+                                <div class="review-text">Switch bisa diganti-ganti, sesuai kebutuhan. Build quality premium.</div>
+                            </div>
+                            <div class="review">
+                                <div class="review-user">Agus Wijaya</div>
+                                <div class="review-text">Responsif untuk gaming, suara switch enak didengar. Layak untuk harganya.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-cart"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                            <button class="btn btn-buy"><i class="fas fa-bolt"></i> Beli</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Monitor Gaming" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Monitor Gaming 27" LG UltraGear 144Hz</h3>
+                        <div class="product-price">Rp 4.750.000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5 (112 ulasan)</span>
+                        </div>
+                        
+                        <div class="product-reviews">
+                            <div class="review">
+                                <div class="review-user">Kevin Andrian</div>
+                                <div class="review-text">Refresh rate 144Hz bikin gaming mulus banget, warna tajam dan akurat.</div>
+                            </div>
+                            <div class="review">
+                                <div class="review-user">Maya Sari</div>
+                                <div class="review-text">Desain bezel tipis, cocok untuk multi monitor setup. Kualitas gambar excellent.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-cart"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                            <button class="btn btn-buy"><i class="fas fa-bolt"></i> Beli</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>CyberTech Market</h3>
+                    <p>Marketplace terlengkap untuk semua kebutuhan komputer dan teknologi Anda. Menyediakan produk berkualitas dengan harga terbaik.</p>
+                    <div style="margin-top: 20px;">
+                        <i class="fab fa-facebook" style="font-size: 1.5rem; margin-right: 15px; cursor: pointer;"></i>
+                        <i class="fab fa-instagram" style="font-size: 1.5rem; margin-right: 15px; cursor: pointer;"></i>
+                        <i class="fab fa-twitter" style="font-size: 1.5rem; margin-right: 15px; cursor: pointer;"></i>
+                        <i class="fab fa-youtube" style="font-size: 1.5rem; cursor: pointer;"></i>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kategori Produk</h3>
+                    <ul>
+                        <li><a href="#">Laptop & Notebook</a></li>
+                        <li><a href="#">PC & Komputer Rakitan</a></li>
+                        <li><a href="#">Komponen PC</a></li>
+                        <li><a href="#">Penyimpanan Data</a></li>
+                        <li><a href="#">Aksesoris Komputer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Bantuan & Panduan</h3>
+                    <ul>
+                        <li><a href="#">Cara Berbelanja</a></li>
+                        <li><a href="#">Pembayaran & Promo</a></li>
+                        <li><a href="#">Pengiriman Barang</a></li>
+                        <li><a href="#">Garansi & Return</a></li>
+                        <li><a href="#">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Informasi Perusahaan</h3>
+                    <ul>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Karir</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CyberTech Market. All rights reserved. Marketplace kebutuhan komputer terlengkap.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi sederhana untuk interaksi tombol
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartButtons = document.querySelectorAll('.btn-cart');
+            const buyButtons = document.querySelectorAll('.btn-buy');
+            const cartCount = document.querySelector('.cart-count');
+            
+            // Tambah ke keranjang
+            cartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    let count = parseInt(cartCount.textContent);
+                    cartCount.textContent = count + 1;
+                    
+                    // Animasi sederhana
+                    this.innerHTML = '<i class="fas fa-check"></i> Ditambahkan';
+                    this.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Keranjang';
+                        this.style.backgroundColor = '#4fc3f7';
+                    }, 1500);
+                });
+            });
+            
+            // Tombol beli sekarang
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Terima kasih! Produk akan diproses untuk pembelian. Anda akan diarahkan ke halaman pembayaran.');
+                });
+            });
+            
+            // Efek hover pada kategori
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.category-icon i');
+                    icon.style.transform = 'scale(1.2)';
+                    icon.style.transition = 'transform 0.3s';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.category-icon i');
+                    icon.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
